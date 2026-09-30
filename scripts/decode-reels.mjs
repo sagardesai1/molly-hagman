@@ -1,11 +1,14 @@
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dir = join(root, "public/images/reels/_b64");
 const outDir = join(root, "public/images/reels");
-const manifest = JSON.parse(readFileSync(join(dir, "manifest.json"), "utf8"));
+const manifestPath = existsSync(join(dir, "manifest.full.json"))
+  ? join(dir, "manifest.full.json")
+  : join(dir, "manifest.json");
+const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
 
 mkdirSync(outDir, { recursive: true });
 for (const item of manifest) {
