@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BookingForm } from "@/components/booking-form";
+import { InstagramSection } from "@/components/instagram-section";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
 import { SiteHeader } from "@/components/site-header";
@@ -186,6 +187,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <InstagramSection />
 
         <ReviewsSection />
 
