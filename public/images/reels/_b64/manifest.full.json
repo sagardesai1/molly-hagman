@@ -1,0 +1,19 @@
+{
+  "name": "partner",
+  "parts": [
+    "partner.c0.b64.txt",
+    "partner.c1.b64.txt",
+    "partner.c2.b64.txt",
+    "partner.c3.b64.txt",
+    "partner.c4.b64.txt",
+    "partner.c5.b64.txt",
+    "partner.c6.b64.txt",
+    "partner.c7.b64.txt",
+    "partner.c8.b64.txt",
+    "partner.c9.b64.txt",
+    "partner.c10.b64.txt",
+    "partner.c11.b64.txt"
+  ],
+  "size": 84715,
+  "sha1": "64a4be641c132dd5de8974993ab67b920b8fdb59"
+}
