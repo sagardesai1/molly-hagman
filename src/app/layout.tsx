@@ -18,7 +18,7 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Molly Hagman | Private Salsa Lessons in NYC & Online",
   description:
-    "Book private salsa and bachata lessons with Molly Hagman — NYC-based professional dancer, Yamulé alum, and Head Instructor at Salsa Salsa Dance Studio.",
+    "Book private salsa and bachata lessons with Molly Hagman — NYC-based professional dancer, Yamuleé alum, and Head Instructor at Salsa Salsa Dance Studio.",
   openGraph: {
     title: "Molly Hagman | Private Salsa Lessons",
     description:
