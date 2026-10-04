@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Reveal } from "@/components/reveal";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -7,6 +6,8 @@ import { cn } from "@/lib/utils";
  * Custom reel cards (not Instagram iframes).
  * Instagram embeds are cross-origin — we can’t hide likes/comments inside them.
  * These posters open the reel on Instagram in a new tab.
+ *
+ * Use plain <img> (not next/image) so posters don’t depend on the image optimizer.
  */
 const reels = [
   {
@@ -82,12 +83,15 @@ export function InstagramSection() {
                   rel="noreferrer"
                   className="group relative block aspect-[9/16] overflow-hidden border border-border/70 bg-secondary/50 outline-none focus-visible:ring-2 focus-visible:ring-ember"
                 >
-                  <Image
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     src={reel.poster}
                     alt={`${reel.label} — Molly Hagman on Instagram`}
-                    fill
-                    sizes="(max-width: 640px) 220px, (max-width: 1024px) 240px, 220px"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    width={720}
+                    height={1280}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
                   <span className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/15 to-ink/25" />
                   <span className="absolute inset-0 flex items-center justify-center">
