@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Scroll reveal. Content stays visible if JS fails or the observer never fires.
- * On the client we briefly arm the hide class, then fade in on intersect.
+ * Scroll reveal — additive motion only. Content is always visible so a JS/hydration
+ * failure can never blank the page below the hero.
  */
 export function Reveal({
   children,
@@ -16,7 +16,6 @@ export function Reveal({
   delay?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [armed, setArmed] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -30,11 +29,7 @@ export function Reveal({
       setVisible(true);
     };
 
-    // Arm animation only after mount so SSR/no-JS content stays visible.
-    setArmed(true);
-
-    // Safety net: never leave sections blank if the observer misses.
-    const fallback = window.setTimeout(show, 900);
+    const fallback = window.setTimeout(show, 600);
 
     if (typeof IntersectionObserver === "undefined") {
       show();
@@ -61,7 +56,7 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      className={`reveal${armed && !visible ? " reveal-pending" : ""}${visible ? " is-visible" : ""} ${className}`}
+      className={`reveal${visible ? " is-visible" : ""} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
